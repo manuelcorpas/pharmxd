@@ -1,0 +1,706 @@
+/* PharmXD - Pharmacogenomic Dosing Advisor
+   Mobile-first responsive design */
+
+/* CSS Variables */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #dbeafe;
+    --success: #16a34a;
+    --success-light: #dcfce7;
+    --warning: #ca8a04;
+    --warning-light: #fef9c3;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--gray-100) 100%);
+    min-height: 100vh;
+}
+
+/* App Container */
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Header */
+.app-header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.logo-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.app-main {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* Steps */
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.step-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.step-content {
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+.step-description {
+    color: var(--gray-600);
+    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius);
+    padding: 2rem 1rem;
+    text-align: center;
+    background: white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.upload-text {
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.upload-or {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.upload-button {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.upload-button:hover {
+    background: var(--primary-dark);
+}
+
+.upload-hint {
+    font-size: 0.8125rem;
+    color: var(--gray-400);
+    margin-top: 0.75rem;
+}
+
+/* Demo Section */
+.demo-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+}
+
+.demo-section p {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.demo-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.demo-btn {
+    background: white;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.demo-btn:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.demo-name {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.demo-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-top: 0.125rem;
+}
+
+/* Loading Spinner */
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--gray-200);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Profile Results */
+.profile-summary {
+    background: var(--primary-light);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.profile-summary p {
+    color: var(--primary-dark);
+}
+
+.profile-summary strong {
+    font-size: 1.25rem;
+}
+
+/* Gene Cards */
+.gene-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.gene-card {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--gray-300);
+}
+
+.gene-card.normal {
+    border-left-color: var(--success);
+}
+
+.gene-card.intermediate {
+    border-left-color: var(--warning);
+}
+
+.gene-card.poor, .gene-card.ultrarapid {
+    border-left-color: var(--danger);
+}
+
+.gene-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.gene-name {
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.gene-diplotype {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    font-family: monospace;
+}
+
+.gene-phenotype {
+    font-size: 0.9375rem;
+}
+
+.phenotype-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.phenotype-badge.normal {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.phenotype-badge.intermediate {
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.phenotype-badge.poor, .phenotype-badge.ultrarapid {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+/* Drug Search */
+.drug-search {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.drug-search input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.drug-search input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.suggestion-item:hover {
+    background: var(--gray-50);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+/* Common Drugs */
+.common-drugs {
+    margin-bottom: 1.5rem;
+}
+
+.common-drugs p {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
+}
+
+.drug-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.drug-chip {
+    background: white;
+    border: 1px solid var(--gray-300);
+    border-radius: 20px;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.drug-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Drug Result */
+.drug-result {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.drug-result-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.drug-result-header h3 {
+    font-size: 1.125rem;
+    color: var(--gray-800);
+    text-transform: capitalize;
+}
+
+.drug-result-header .drug-class {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+}
+
+.drug-result-body {
+    padding: 1rem;
+}
+
+.result-section {
+    margin-bottom: 1rem;
+}
+
+.result-section:last-child {
+    margin-bottom: 0;
+}
+
+.result-section h4 {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-box {
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+}
+
+.recommendation-box.standard {
+    background: var(--success-light);
+    border: 1px solid var(--success);
+}
+
+.recommendation-box.caution {
+    background: var(--warning-light);
+    border: 1px solid var(--warning);
+}
+
+.recommendation-box.avoid {
+    background: var(--danger-light);
+    border: 1px solid var(--danger);
+}
+
+.recommendation-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-box.standard h4 { color: var(--success); }
+.recommendation-box.caution h4 { color: var(--warning); }
+.recommendation-box.avoid h4 { color: var(--danger); }
+
+.recommendation-box p {
+    font-size: 0.9375rem;
+    color: var(--gray-700);
+}
+
+.fda-label {
+    background: var(--gray-100);
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    font-style: italic;
+}
+
+.source-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.source-link:hover {
+    text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--radius);
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--gray-600);
+}
+
+#modal-body {
+    padding: 1.5rem;
+}
+
+/* Footer */
+.app-footer {
+    background: var(--gray-800);
+    color: var(--gray-300);
+    padding: 1.25rem 1rem;
+    font-size: 0.8125rem;
+}
+
+.disclaimer {
+    background: var(--gray-700);
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+}
+
+.disclaimer strong {
+    color: var(--warning);
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-info a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+.footer-info a:hover {
+    text-decoration: underline;
+}
+
+.privacy {
+    margin-top: 0.5rem;
+    color: var(--success);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 0.25rem 0;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+/* Status File */
+.file-status {
+    background: white;
+    border: 1px solid var(--success);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-status .file-name {
+    color: var(--gray-700);
+    font-size: 0.875rem;
+}
+
+.file-status .file-check {
+    color: var(--success);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 480px) {
+    .app-header {
+        padding: 2rem 1.5rem;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+
+    .step-content {
+        padding: 1.5rem;
+    }
+
+    .upload-zone {
+        padding: 3rem 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 2rem 1rem;
+    }
+
+    .app-container {
+        border-radius: var(--radius);
+        min-height: auto;
+    }
+}

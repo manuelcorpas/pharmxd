@@ -1,0 +1,74 @@
+{
+  "project": {
+    "name": "PharmXD",
+    "version": "0.1.0",
+    "description": "Pharmacogenomic Dosing Advisor",
+    "created": "2026-01-17",
+    "author": "Corpas-Core"
+  },
+  "deployment": {
+    "github_repo": "pharmxd",
+    "github_pages_folder": "webapp",
+    "visibility": "private",
+    "webapp_public": true
+  },
+  "data_sources": {
+    "cpic": {
+      "api": "https://api.pharmgkb.org/",
+      "website": "https://cpicpgx.org/",
+      "license": "CC0 (Public Domain)"
+    },
+    "fda": {
+      "biomarkers_table": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+      "associations_table": "https://www.fda.gov/medical-devices/precision-medicine/table-pharmacogenetic-associations"
+    },
+    "pharmgkb": {
+      "api": "https://api.pharmgkb.org/",
+      "requires_account": true
+    }
+  },
+  "supported_input_formats": {
+    "23andme": {
+      "extension": [".txt", ".zip"],
+      "delimiter": "tab",
+      "columns": ["rsid", "chromosome", "position", "genotype"],
+      "versions": ["v3", "v4", "v5"]
+    },
+    "ancestrydna": {
+      "extension": [".txt", ".zip"],
+      "delimiter": "tab",
+      "columns": ["rsid", "chromosome", "position", "allele1", "allele2"],
+      "versions": ["v1", "v2"]
+    }
+  },
+  "mvp_scope": {
+    "genes": ["CYP2C19", "CYP2D6", "CYP2C9", "VKORC1", "SLCO1B1"],
+    "demo_drugs": ["clopidogrel", "codeine", "simvastatin", "warfarin", "omeprazole"],
+    "features": [
+      "genetic_file_upload",
+      "snp_parsing",
+      "phenotype_calling",
+      "drug_text_search",
+      "dosing_recommendations"
+    ],
+    "deferred_features": [
+      "pill_image_recognition",
+      "barcode_scanning",
+      "drug_interaction_checker",
+      "pdf_report_generation"
+    ]
+  },
+  "privacy": {
+    "data_storage": "client_side_only",
+    "server_uploads": false,
+    "uses_indexeddb": true,
+    "genetic_data_transmitted": false,
+    "disclaimer_required": true
+  },
+  "regulatory": {
+    "purpose": "educational",
+    "not_for_clinical_use": true,
+    "requires_disclaimer": true,
+    "disclaimer_text": "PharmXD is for educational and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your physician or pharmacist before making any medication decisions."
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "created": "2026-01-17",
+    "source": "CPIC Guidelines (cpicpgx.org)",
+    "description": "Sample CPIC guidelines for PharmXD MVP demo",
+    "disclaimer": "For educational purposes only. Consult healthcare provider for medical decisions."
+  },
+  "guidelines": [
+    {
+      "drug": "clopidogrel",
+      "drug_class": "Antiplatelet agent",
+      "brand_names": ["Plavix"],
+      "gene": "CYP2C19",
+      "guideline_url": "https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/",
+      "last_updated": "2022-05-01",
+      "recommendations": {
+        "ultrarapid_metabolizer": {
+          "phenotype": "CYP2C19 Ultrarapid Metabolizer (*17/*17, *1/*17)",
+          "recommendation": "Use recommended dose",
+          "strength": "Strong",
+          "implications": "Normal clopidogrel metabolism to active metabolite",
+          "classification": "Standard dosing"
+        },
+        "normal_metabolizer": {
+          "phenotype": "CYP2C19 Normal Metabolizer (*1/*1)",
+          "recommendation": "Use recommended dose",
+          "strength": "Strong",
+          "implications": "Normal clopidogrel metabolism to active metabolite",
+          "classification": "Standard dosing"
+        },
+        "intermediate_metabolizer": {
+          "phenotype": "CYP2C19 Intermediate Metabolizer (*1/*2, *1/*3, *2/*17)",
+          "recommendation": "Alternative antiplatelet therapy if no contraindication (e.g., prasugrel, ticagrelor). If using clopidogrel, be aware of reduced platelet inhibition.",
+          "strength": "Moderate",
+          "implications": "Reduced formation of active metabolite; reduced platelet inhibition; increased residual platelet aggregation; increased risk for adverse cardiovascular events",
+          "classification": "Consider alternative"
+        },
+        "poor_metabolizer": {
+          "phenotype": "CYP2C19 Poor Metabolizer (*2/*2, *2/*3, *3/*3)",
+          "recommendation": "Alternative antiplatelet therapy recommended (e.g., prasugrel, ticagrelor)",
+          "strength": "Strong",
+          "implications": "Significantly reduced formation of active metabolite; significantly reduced platelet inhibition; significantly increased risk for adverse cardiovascular events",
+          "classification": "Avoid"
+        }
+      },
+      "fda_label": "Tests are available to identify patients who are CYP2C19 poor metabolizers. Consider use of another platelet P2Y12 inhibitor in patients identified as CYP2C19 poor metabolizers."
+    },
+    {
+      "drug": "codeine",
+      "drug_class": "Opioid analgesic",
+      "brand_names": ["Tylenol with Codeine"],
+      "gene": "CYP2D6",
+      "guideline_url": "https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/",
+      "last_updated": "2019-01-01",
+      "recommendations": {
+        "ultrarapid_metabolizer": {
+          "phenotype": "CYP2D6 Ultrarapid Metabolizer (gene duplications)",
+          "recommendation": "Avoid codeine. Select alternative analgesic (non-tramadol opioid or non-opioid)",
+          "strength": "Strong",
+          "implications": "Greatly increased morphine formation leading to higher risk of toxicity",
+          "classification": "Avoid"
+        },
+        "normal_metabolizer": {
+          "phenotype": "CYP2D6 Normal Metabolizer (*1/*1)",
+          "recommendation": "Use label-recommended age or weight-specific dosing",
+          "strength": "Strong",
+          "implications": "Normal morphine formation",
+          "classification": "Standard dosing"
+        },
+        "intermediate_metabolizer": {
+          "phenotype": "CYP2D6 Intermediate Metabolizer (*1/*4, *1/*41)",
+          "recommendation": "Use label-recommended age or weight-specific dosing. If inadequate response, consider alternative analgesic.",
+          "strength": "Moderate",
+          "implications": "Reduced morphine formation",
+          "classification": "Use with caution"
+        },
+        "poor_metabolizer": {
+          "phenotype": "CYP2D6 Poor Metabolizer (*4/*4, *4/*6)",
+          "recommendation": "Avoid codeine. Select alternative analgesic (non-tramadol opioid or non-opioid)",
+          "strength": "Strong",
+          "implications": "Greatly reduced morphine formation. Lack of analgesia.",
+          "classification": "Avoid"
+        }
+      },
+      "fda_label": "Some individuals may be ultra-rapid metabolizers because of a specific CYP2D6 genotype. These individuals convert codeine into its active metabolite, morphine, more rapidly and completely than other people. This rapid conversion results in higher than expected serum morphine levels."
+    },
+    {
+      "drug": "simvastatin",
+      "drug_class": "HMG-CoA reductase inhibitor (statin)",
+      "brand_names": ["Zocor"],
+      "gene": "SLCO1B1",
+      "guideline_url": "https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/",
+      "last_updated": "2014-06-01",
+      "recommendations": {
+        "normal_function": {
+          "phenotype": "SLCO1B1 Normal Function (TT at rs4149056)",
+          "recommendation": "Prescribe desired starting dose and adjust based on patient response",
+          "strength": "Strong",
+          "implications": "Normal myopathy risk with simvastatin",
+          "classification": "Standard dosing"
+        },
+        "intermediate_function": {
+          "phenotype": "SLCO1B1 Intermediate Function (TC at rs4149056)",
+          "recommendation": "Prescribe a lower dose or consider an alternative statin. Consider routine creatine kinase surveillance.",
+          "strength": "Strong",
+          "implications": "Increased myopathy risk with simvastatin (4.5-fold increased risk)",
+          "classification": "Use lower dose"
+        },
+        "poor_function": {
+          "phenotype": "SLCO1B1 Poor Function (CC at rs4149056)",
+          "recommendation": "Prescribe an alternative statin (e.g., pravastatin, rosuvastatin) or if simvastatin necessary, use low dose (≤20 mg/day)",
+          "strength": "Strong",
+          "implications": "High myopathy risk with simvastatin (17-fold increased risk)",
+          "classification": "Avoid high doses"
+        }
+      },
+      "fda_label": "Predisposing factors for myopathy include the SLCO1B1 (c.521T>C) polymorphism."
+    },
+    {
+      "drug": "warfarin",
+      "drug_class": "Anticoagulant",
+      "brand_names": ["Coumadin", "Jantoven"],
+      "genes": ["CYP2C9", "VKORC1"],
+      "guideline_url": "https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/",
+      "last_updated": "2017-01-01",
+      "recommendations": {
+        "normal_CYP2C9_normal_VKORC1": {
+          "phenotype": "CYP2C9 *1/*1 + VKORC1 GG",
+          "recommendation": "Use warfarin dosing algorithm. Expected weekly dose: 5-7 mg/day",
+          "strength": "Strong",
+          "classification": "Standard dosing"
+        },
+        "normal_CYP2C9_sensitive_VKORC1": {
+          "phenotype": "CYP2C9 *1/*1 + VKORC1 AA",
+          "recommendation": "Decrease dose. Expected weekly dose: 3-4 mg/day",
+          "strength": "Strong",
+          "classification": "Reduce dose"
+        },
+        "IM_CYP2C9_normal_VKORC1": {
+          "phenotype": "CYP2C9 *1/*2 or *1/*3 + VKORC1 GG",
+          "recommendation": "Decrease dose. Expected weekly dose: 3-5 mg/day",
+          "strength": "Strong",
+          "classification": "Reduce dose"
+        },
+        "PM_CYP2C9_sensitive_VKORC1": {
+          "phenotype": "CYP2C9 *2/*2, *2/*3, or *3/*3 + VKORC1 AA",
+          "recommendation": "Significantly decrease dose. Expected weekly dose: 0.5-2 mg/day. Consider alternative anticoagulant.",
+          "strength": "Strong",
+          "classification": "Significantly reduce dose"
+        }
+      },
+      "fda_label": "The patient's CYP2C9 and VKORC1 genotype information, when available, can assist in selection of the initial dose of COUMADIN."
+    },
+    {
+      "drug": "omeprazole",
+      "drug_class": "Proton pump inhibitor",
+      "brand_names": ["Prilosec", "Losec"],
+      "gene": "CYP2C19",
+      "guideline_url": "https://cpicpgx.org/guidelines/guideline-for-proton-pump-inhibitors-and-cyp2c19/",
+      "last_updated": "2021-01-01",
+      "recommendations": {
+        "ultrarapid_metabolizer": {
+          "phenotype": "CYP2C19 Ultrarapid Metabolizer",
+          "recommendation": "For H. pylori eradication: increase dose by 50-100%. For GERD: standard dose, increase if inadequate response.",
+          "strength": "Moderate",
+          "implications": "Increased metabolism, decreased efficacy possible",
+          "classification": "Consider dose increase"
+        },
+        "normal_metabolizer": {
+          "phenotype": "CYP2C19 Normal Metabolizer",
+          "recommendation": "Use recommended dose",
+          "strength": "Strong",
+          "classification": "Standard dosing"
+        },
+        "intermediate_metabolizer": {
+          "phenotype": "CYP2C19 Intermediate Metabolizer",
+          "recommendation": "Use recommended dose",
+          "strength": "Strong",
+          "implications": "Slightly reduced metabolism",
+          "classification": "Standard dosing"
+        },
+        "poor_metabolizer": {
+          "phenotype": "CYP2C19 Poor Metabolizer",
+          "recommendation": "For chronic therapy (>12 weeks): consider 50% dose reduction. Monitor for adverse effects.",
+          "strength": "Moderate",
+          "implications": "Decreased metabolism, increased drug exposure",
+          "classification": "Consider dose reduction for long-term use"
+        }
+      },
+      "fda_label": "In poor metabolizers, omeprazole plasma concentrations are substantially elevated."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PharmXD - Pharmacogenomic Dosing Advisor. Get personalized medication dosing based on your genetic profile.">
+    <meta name="theme-color" content="#2563eb">
+    <title>PharmXD - Pharmacogenomic Dosing Advisor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">💊</span>
+                <span class="logo-text">PharmXD</span>
+            </div>
+            <p class="tagline">Pharmacogenomic Dosing Advisor</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Step 1: Upload Genetic Data -->
+            <section id="step-upload" class="step active">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h2>Upload Your Genetic Data</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">
+                        Upload your raw genetic data file from 23andMe, AncestryDNA, or similar services.
+                        <strong>Your data stays on your device</strong> - nothing is uploaded to any server.
+                    </p>
+
+                    <div class="upload-zone" id="upload-zone">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">Drag & drop your file here</p>
+                        <p class="upload-or">or</p>
+                        <label class="upload-button">
+                            <input type="file" id="file-input" accept=".txt,.csv,.zip" hidden>
+                            Choose File
+                        </label>
+                        <p class="upload-hint">Accepts .txt or .csv files from 23andMe, AncestryDNA</p>
+                    </div>
+
+                    <div class="demo-section">
+                        <p>No genetic data? Try a demo:</p>
+                        <div class="demo-buttons">
+                            <button class="demo-btn" data-demo="sarah">
+                                <span class="demo-name">Sarah</span>
+                                <span class="demo-desc">CYP2C19 Intermediate</span>
+                            </button>
+                            <button class="demo-btn" data-demo="john">
+                                <span class="demo-name">John</span>
+                                <span class="demo-desc">CYP2D6 Poor Metabolizer</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Genetic Profile -->
+            <section id="step-profile" class="step">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h2>Your Pharmacogenetic Profile</h2>
+                </div>
+                <div class="step-content">
+                    <div id="profile-loading" class="loading hidden">
+                        <div class="spinner"></div>
+                        <p>Analyzing genetic variants...</p>
+                    </div>
+
+                    <div id="profile-results" class="hidden">
+                        <div class="profile-summary">
+                            <p><strong id="snp-count">0</strong> pharmacogenomic variants analyzed</p>
+                        </div>
+
+                        <div class="gene-cards" id="gene-cards">
+                            <!-- Gene cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Drug Lookup -->
+            <section id="step-drugs" class="step">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h2>Check Your Medications</h2>
+                </div>
+                <div class="step-content">
+                    <div class="drug-search">
+                        <input type="text"
+                               id="drug-search-input"
+                               placeholder="Search for a medication..."
+                               autocomplete="off">
+                        <div id="drug-suggestions" class="suggestions hidden"></div>
+                    </div>
+
+                    <div class="common-drugs">
+                        <p>Common medications:</p>
+                        <div class="drug-chips" id="drug-chips">
+                            <button class="drug-chip" data-drug="clopidogrel">Clopidogrel</button>
+                            <button class="drug-chip" data-drug="codeine">Codeine</button>
+                            <button class="drug-chip" data-drug="warfarin">Warfarin</button>
+                            <button class="drug-chip" data-drug="simvastatin">Simvastatin</button>
+                            <button class="drug-chip" data-drug="omeprazole">Omeprazole</button>
+                        </div>
+                    </div>
+
+                    <div id="drug-result" class="drug-result hidden">
+                        <!-- Drug result will be inserted here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> PharmXD is for educational purposes only.
+                It is not a substitute for professional medical advice.
+                Always consult your physician or pharmacist before making medication decisions.
+            </div>
+            <div class="footer-info">
+                <p>Data sources: <a href="https://cpicpgx.org/" target="_blank">CPIC</a> |
+                   <a href="https://www.pharmgkb.org/" target="_blank">PharmGKB</a> |
+                   <a href="https://www.fda.gov/" target="_blank">FDA</a></p>
+                <p class="privacy">🔒 Your genetic data never leaves your device</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="result-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <div id="modal-body">
+                <!-- Modal content inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/snp-parser.js"></script>
+    <script src="js/phenotype.js"></script>
+    <script src="js/cpic-lookup.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

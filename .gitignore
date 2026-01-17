@@ -1,0 +1,43 @@
+# PharmXD .gitignore
+# Keep webapp public, protect sensitive data
+
+# Data files (large, sensitive)
+DATA/DRUG_LABELS/
+DATA/OPENSNP/
+DATA/CLINPGX/
+DATA/SAMPLE_GENOTYPES/*.txt
+DATA/SAMPLE_GENOTYPES/*.json
+
+# Logs
+LOGS/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment files
+.env
+.env.local
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Scientific papers (copyright)
+CONTEXT/*.pdf
+
+# Keep these files
+!webapp/**
+!CONFIG/*.json
+!DOCXS/*.md
+!PYTHON/*.py
+!README.md

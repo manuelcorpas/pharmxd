@@ -1,0 +1,20 @@
+{
+  "name": "PharmXD - Pharmacogenomic Dosing Advisor",
+  "short_name": "PharmXD",
+  "description": "Get personalized medication dosing recommendations based on your genetic profile",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232563eb' width='100' height='100' rx='20'/><text y='.9em' x='50%' text-anchor='middle' font-size='60'>💊</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "medical"],
+  "lang": "en-US"
+}

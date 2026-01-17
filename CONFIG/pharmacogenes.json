@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "created": "2026-01-17",
+    "source": "CPIC / PharmGKB / dbSNP",
+    "description": "Key pharmacogene variants detectable from DTC genetic testing (23andMe, AncestryDNA)"
+  },
+  "genes": {
+    "CYP2C19": {
+      "name": "Cytochrome P450 2C19",
+      "chromosome": "10",
+      "function": "Drug metabolism enzyme",
+      "key_drugs": ["clopidogrel", "omeprazole", "citalopram", "voriconazole", "pantoprazole"],
+      "variants": {
+        "rs4244285": {
+          "name": "*2",
+          "effect": "no_function",
+          "ref": "G",
+          "alt": "A",
+          "note": "Splicing defect, non-functional enzyme"
+        },
+        "rs4986893": {
+          "name": "*3",
+          "effect": "no_function",
+          "ref": "G",
+          "alt": "A",
+          "note": "Premature stop codon"
+        },
+        "rs12248560": {
+          "name": "*17",
+          "effect": "increased_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Enhanced transcription, ultrarapid metabolism"
+        },
+        "rs28399504": {
+          "name": "*4",
+          "effect": "no_function",
+          "ref": "A",
+          "alt": "G",
+          "note": "Non-functional"
+        }
+      },
+      "phenotypes": {
+        "ultrarapid_metabolizer": {
+          "genotypes": ["*17/*17", "*1/*17"],
+          "description": "Increased enzyme activity"
+        },
+        "normal_metabolizer": {
+          "genotypes": ["*1/*1"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["*1/*2", "*1/*3", "*2/*17"],
+          "description": "Reduced enzyme activity"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*2/*2", "*2/*3", "*3/*3"],
+          "description": "Little to no enzyme activity"
+        }
+      }
+    },
+    "CYP2D6": {
+      "name": "Cytochrome P450 2D6",
+      "chromosome": "22",
+      "function": "Drug metabolism enzyme (25% of drugs)",
+      "key_drugs": ["codeine", "tramadol", "tamoxifen", "amitriptyline", "ondansetron"],
+      "variants": {
+        "rs3892097": {
+          "name": "*4",
+          "effect": "no_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Splicing defect, most common null allele in Europeans"
+        },
+        "rs5030655": {
+          "name": "*6",
+          "effect": "no_function",
+          "ref": "T",
+          "alt": "DEL",
+          "note": "Frameshift deletion"
+        },
+        "rs16947": {
+          "name": "*2 (partial)",
+          "effect": "normal_function",
+          "ref": "G",
+          "alt": "A",
+          "note": "Often normal function"
+        },
+        "rs1065852": {
+          "name": "*10/*4",
+          "effect": "decreased_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Found in *4 and *10 alleles"
+        },
+        "rs28371725": {
+          "name": "*41",
+          "effect": "decreased_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Reduced function allele"
+        }
+      },
+      "phenotypes": {
+        "ultrarapid_metabolizer": {
+          "genotypes": ["*1/*1xN", "*1/*2xN"],
+          "description": "Gene duplication, very high activity"
+        },
+        "normal_metabolizer": {
+          "genotypes": ["*1/*1", "*1/*2", "*2/*2"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["*1/*4", "*1/*41", "*41/*41"],
+          "description": "Reduced enzyme activity"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*4/*4", "*4/*6", "*6/*6"],
+          "description": "Little to no enzyme activity"
+        }
+      }
+    },
+    "CYP2C9": {
+      "name": "Cytochrome P450 2C9",
+      "chromosome": "10",
+      "function": "Drug metabolism enzyme",
+      "key_drugs": ["warfarin", "phenytoin", "celecoxib", "losartan"],
+      "variants": {
+        "rs1799853": {
+          "name": "*2",
+          "effect": "decreased_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "30% reduced activity"
+        },
+        "rs1057910": {
+          "name": "*3",
+          "effect": "decreased_function",
+          "ref": "A",
+          "alt": "C",
+          "note": "80% reduced activity"
+        }
+      },
+      "phenotypes": {
+        "normal_metabolizer": {
+          "genotypes": ["*1/*1"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["*1/*2", "*1/*3", "*2/*2"],
+          "description": "Reduced enzyme activity"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*2/*3", "*3/*3"],
+          "description": "Significantly reduced enzyme activity"
+        }
+      }
+    },
+    "VKORC1": {
+      "name": "Vitamin K Epoxide Reductase Complex Subunit 1",
+      "chromosome": "16",
+      "function": "Vitamin K cycle enzyme (warfarin target)",
+      "key_drugs": ["warfarin"],
+      "variants": {
+        "rs9923231": {
+          "name": "-1639G>A",
+          "effect": "decreased_expression",
+          "ref": "G",
+          "alt": "A",
+          "note": "Reduced VKORC1 expression, increased warfarin sensitivity"
+        }
+      },
+      "phenotypes": {
+        "high_dose": {
+          "genotypes": ["GG"],
+          "description": "Normal warfarin dose requirement"
+        },
+        "intermediate_dose": {
+          "genotypes": ["GA"],
+          "description": "Moderate warfarin sensitivity"
+        },
+        "low_dose": {
+          "genotypes": ["AA"],
+          "description": "High warfarin sensitivity, lower doses needed"
+        }
+      }
+    },
+    "SLCO1B1": {
+      "name": "Solute Carrier Organic Anion Transporter 1B1",
+      "chromosome": "12",
+      "function": "Hepatic drug uptake transporter",
+      "key_drugs": ["simvastatin", "atorvastatin", "rosuvastatin", "pravastatin"],
+      "variants": {
+        "rs4149056": {
+          "name": "*5",
+          "effect": "decreased_function",
+          "ref": "T",
+          "alt": "C",
+          "note": "Reduced transporter function, increased statin myopathy risk"
+        }
+      },
+      "phenotypes": {
+        "normal_function": {
+          "genotypes": ["TT"],
+          "description": "Normal statin clearance"
+        },
+        "intermediate_function": {
+          "genotypes": ["TC"],
+          "description": "Increased myopathy risk, consider lower doses"
+        },
+        "poor_function": {
+          "genotypes": ["CC"],
+          "description": "High myopathy risk, avoid simvastatin >20mg"
+        }
+      }
+    },
+    "DPYD": {
+      "name": "Dihydropyrimidine Dehydrogenase",
+      "chromosome": "1",
+      "function": "Fluoropyrimidine metabolism",
+      "key_drugs": ["5-fluorouracil", "capecitabine", "tegafur"],
+      "variants": {
+        "rs3918290": {
+          "name": "*2A",
+          "effect": "no_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Splice site variant, complete loss of function"
+        },
+        "rs55886062": {
+          "name": "*13",
+          "effect": "no_function",
+          "ref": "A",
+          "alt": "C",
+          "note": "Non-functional variant"
+        },
+        "rs67376798": {
+          "name": "D949V",
+          "effect": "decreased_function",
+          "ref": "T",
+          "alt": "A",
+          "note": "Reduced function variant"
+        }
+      },
+      "phenotypes": {
+        "normal_metabolizer": {
+          "genotypes": ["Normal/Normal"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["Normal/*2A", "Normal/*13"],
+          "description": "50% enzyme activity, reduce dose 50%"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*2A/*2A", "*2A/*13"],
+          "description": "No enzyme activity, contraindicated"
+        }
+      }
+    },
+    "TPMT": {
+      "name": "Thiopurine S-Methyltransferase",
+      "chromosome": "6",
+      "function": "Thiopurine metabolism",
+      "key_drugs": ["azathioprine", "mercaptopurine", "thioguanine"],
+      "variants": {
+        "rs1800460": {
+          "name": "*3B",
+          "effect": "no_function",
+          "ref": "C",
+          "alt": "T",
+          "note": "Non-functional variant"
+        },
+        "rs1142345": {
+          "name": "*3C",
+          "effect": "no_function",
+          "ref": "T",
+          "alt": "C",
+          "note": "Non-functional variant"
+        },
+        "rs1800462": {
+          "name": "*2",
+          "effect": "no_function",
+          "ref": "C",
+          "alt": "G",
+          "note": "Non-functional variant"
+        }
+      },
+      "phenotypes": {
+        "normal_metabolizer": {
+          "genotypes": ["*1/*1"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["*1/*2", "*1/*3A", "*1/*3B", "*1/*3C"],
+          "description": "Reduce starting dose 30-70%"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*3A/*3A", "*2/*3A", "*3C/*3C"],
+          "description": "Reduce dose 90% or use alternative"
+        }
+      }
+    },
+    "UGT1A1": {
+      "name": "UDP Glucuronosyltransferase 1A1",
+      "chromosome": "2",
+      "function": "Glucuronidation enzyme",
+      "key_drugs": ["irinotecan", "atazanavir"],
+      "variants": {
+        "rs8175347": {
+          "name": "*28",
+          "effect": "decreased_function",
+          "ref": "(TA)6",
+          "alt": "(TA)7",
+          "note": "Reduced enzyme expression"
+        }
+      },
+      "phenotypes": {
+        "normal_metabolizer": {
+          "genotypes": ["*1/*1"],
+          "description": "Normal enzyme activity"
+        },
+        "intermediate_metabolizer": {
+          "genotypes": ["*1/*28"],
+          "description": "Reduced enzyme activity"
+        },
+        "poor_metabolizer": {
+          "genotypes": ["*28/*28"],
+          "description": "Gilbert syndrome, high toxicity risk"
+        }
+      }
+    }
+  }
+}
