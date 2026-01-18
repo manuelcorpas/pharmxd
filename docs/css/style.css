@@ -471,13 +471,33 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0;
+    padding: 0.625rem 0.5rem;
     font-size: 0.875rem;
     border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    margin: 0 -0.5rem;
+    transition: background 0.15s;
+}
+
+.alert-drugs li:hover {
+    background: var(--gray-50);
 }
 
 .alert-drugs li:last-child {
     border-bottom: none;
+}
+
+.alert-drugs .drug-arrow {
+    margin-left: auto;
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    transition: transform 0.15s, color 0.15s;
+}
+
+.alert-drugs li:hover .drug-arrow {
+    transform: translateX(3px);
+    color: var(--primary);
 }
 
 .alert-drugs .drug-name {
@@ -489,7 +509,6 @@ body {
     font-size: 0.75rem;
     padding: 0.125rem 0.5rem;
     border-radius: 4px;
-    margin-left: auto;
 }
 
 .alert-drugs .drug-action.caution {

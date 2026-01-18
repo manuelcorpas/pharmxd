@@ -306,6 +306,7 @@ rs1142345\tTPMT\t0\tTT`
                 } else if (classification === 'caution') {
                     cautionCount++;
                     alertDrugs.push({
+                        id: drug.id,
                         name: drug.name,
                         classification: 'caution',
                         label: 'Caution'
@@ -313,6 +314,7 @@ rs1142345\tTPMT\t0\tTT`
                 } else if (classification === 'avoid') {
                     avoidCount++;
                     alertDrugs.push({
+                        id: drug.id,
                         name: drug.name,
                         classification: 'avoid',
                         label: 'Avoid'
@@ -338,11 +340,24 @@ rs1142345\tTPMT\t0\tTT`
             });
 
             elements.alertDrugsList.innerHTML = alertDrugs.map(drug => `
-                <li>
+                <li class="alert-drug-item" data-drug="${drug.id}">
                     <span class="drug-name">${drug.name}</span>
                     <span class="drug-action ${drug.classification}">${drug.label}</span>
+                    <span class="drug-arrow">→</span>
                 </li>
             `).join('');
+
+            // Add click handlers to each drug item
+            elements.alertDrugsList.querySelectorAll('.alert-drug-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    lookupDrug(item.dataset.drug);
+                    // Scroll to the drug result
+                    setTimeout(() => {
+                        elements.drugResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                });
+            });
+
             elements.alertDrugs.classList.remove('hidden');
         } else {
             elements.alertDrugs.classList.add('hidden');
