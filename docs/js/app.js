@@ -101,11 +101,8 @@ rs1142345\tTPMT\t0\tTT`
      * Set up event listeners
      */
     function setupEventListeners() {
-        // File upload - use direct event binding
-        console.log('Setting up file input listener on:', elements.fileInput);
-
+        // File upload
         elements.fileInput.addEventListener('change', function(e) {
-            console.log('File input change event fired');
             handleFileSelect(e);
         });
 
@@ -113,7 +110,6 @@ rs1142345\tTPMT\t0\tTT`
         const uploadBtn = document.getElementById('upload-btn');
         if (uploadBtn) {
             uploadBtn.addEventListener('click', function(e) {
-                console.log('Upload button clicked');
                 e.stopPropagation();
                 elements.fileInput.click();
             });
@@ -126,11 +122,9 @@ rs1142345\tTPMT\t0\tTT`
 
         // Click anywhere in zone (except button) opens file dialog
         elements.uploadZone.addEventListener('click', function(e) {
-            console.log('Upload zone clicked, target:', e.target.tagName, e.target.id);
             if (e.target.id === 'upload-btn' || e.target.id === 'file-input') {
                 return;
             }
-            console.log('Triggering file input from zone click');
             elements.fileInput.click();
         });
 
@@ -138,6 +132,14 @@ rs1142345\tTPMT\t0\tTT`
         document.querySelectorAll('.demo-btn').forEach(btn => {
             btn.addEventListener('click', () => loadDemo(btn.dataset.demo));
         });
+
+        // Upload new file button
+        const uploadNewBtn = document.getElementById('upload-new-btn');
+        if (uploadNewBtn) {
+            uploadNewBtn.addEventListener('click', function() {
+                resetToUpload();
+            });
+        }
 
         // Drug chips
         elements.drugChips.addEventListener('click', (e) => {
@@ -157,13 +159,9 @@ rs1142345\tTPMT\t0\tTT`
      * Handle file selection
      */
     function handleFileSelect(e) {
-        console.log('handleFileSelect triggered', e.target.files);
         const file = e.target.files[0];
         if (file) {
-            console.log('Processing file:', file.name, file.size, 'bytes');
             processFile(file);
-        } else {
-            console.log('No file selected');
         }
         // Reset input so the same file can be selected again
         e.target.value = '';
@@ -202,28 +200,19 @@ rs1142345\tTPMT\t0\tTT`
      * Process uploaded file
      */
     async function processFile(file) {
-        console.log('processFile started for:', file.name);
-
         showStep('profile');
         elements.profileLoading.classList.remove('hidden');
         elements.profileResults.classList.add('hidden');
 
         try {
-            console.log('Calling SNPParser.parseFile...');
             const result = await SNPParser.parseFile(file);
-            console.log('SNPParser result:', result);
-
             state.pgxSNPs = result.pgxSNPs;
             state.fileName = result.fileName;
             state.totalSNPs = result.totalSNPs;
             state.pgxCount = result.pgxCount;
 
-            console.log('Calling PhenotypeCaller.getFullProfile...');
             state.geneProfile = PhenotypeCaller.getFullProfile(result.pgxSNPs);
-            console.log('Gene profile:', state.geneProfile);
-
             displayProfile();
-            console.log('processFile completed successfully');
         } catch (error) {
             console.error('Error processing file:', error);
             alert('Error processing file: ' + error.message);
@@ -263,6 +252,9 @@ rs1142345\tTPMT\t0\tTT`
     function displayProfile() {
         elements.profileLoading.classList.add('hidden');
         elements.profileResults.classList.remove('hidden');
+
+        // Hide the upload section since we have results
+        elements.stepUpload.classList.add('hidden');
 
         // Update SNP count
         elements.snpCount.textContent = state.pgxCount;
@@ -498,6 +490,28 @@ rs1142345\tTPMT\t0\tTT`
      */
     function closeModal() {
         elements.modal.classList.add('hidden');
+    }
+
+    /**
+     * Reset to upload state
+     */
+    function resetToUpload() {
+        // Clear state
+        state.pgxSNPs = null;
+        state.geneProfile = null;
+        state.fileName = null;
+        state.totalSNPs = 0;
+        state.pgxCount = 0;
+
+        // Hide results
+        elements.profileResults.classList.add('hidden');
+        elements.drugResult.classList.add('hidden');
+        elements.stepProfile.classList.remove('active');
+        elements.stepDrugs.classList.remove('active');
+
+        // Show upload section
+        elements.stepUpload.classList.remove('hidden');
+        elements.stepUpload.classList.add('active');
     }
 
     /**
