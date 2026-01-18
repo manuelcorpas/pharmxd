@@ -86,8 +86,18 @@ body {
 }
 
 .tagline {
-    font-size: 0.875rem;
-    opacity: 0.9;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.tagline-sub {
+    font-size: 0.8125rem;
+    opacity: 0.85;
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.4;
 }
 
 /* Main Content */
