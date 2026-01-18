@@ -95,6 +95,7 @@ rs1142345\tTPMT\t0\tTT`
         elements.modal = document.getElementById('result-modal');
         elements.modalBody = document.getElementById('modal-body');
         elements.modalClose = document.querySelector('.modal-close');
+        elements.startOverBtn = document.getElementById('start-over-btn');
     }
 
     /**
@@ -137,6 +138,13 @@ rs1142345\tTPMT\t0\tTT`
         const uploadNewBtn = document.getElementById('upload-new-btn');
         if (uploadNewBtn) {
             uploadNewBtn.addEventListener('click', function() {
+                resetToUpload();
+            });
+        }
+
+        // Start over button in header
+        if (elements.startOverBtn) {
+            elements.startOverBtn.addEventListener('click', function() {
                 resetToUpload();
             });
         }
@@ -255,6 +263,11 @@ rs1142345\tTPMT\t0\tTT`
 
         // Hide the upload section since we have results
         elements.stepUpload.classList.add('hidden');
+
+        // Show the "New File" button in header
+        if (elements.startOverBtn) {
+            elements.startOverBtn.classList.remove('hidden');
+        }
 
         // Update SNP count
         elements.snpCount.textContent = state.pgxCount;
@@ -508,6 +521,11 @@ rs1142345\tTPMT\t0\tTT`
         elements.drugResult.classList.add('hidden');
         elements.stepProfile.classList.remove('active');
         elements.stepDrugs.classList.remove('active');
+
+        // Hide the "New File" button in header
+        if (elements.startOverBtn) {
+            elements.startOverBtn.classList.add('hidden');
+        }
 
         // Show upload section
         elements.stepUpload.classList.remove('hidden');
