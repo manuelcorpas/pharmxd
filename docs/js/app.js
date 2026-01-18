@@ -108,7 +108,16 @@ rs1142345\tTPMT\t0\tTT`
         elements.uploadZone.addEventListener('dragover', handleDragOver);
         elements.uploadZone.addEventListener('dragleave', handleDragLeave);
         elements.uploadZone.addEventListener('drop', handleDrop);
-        elements.uploadZone.addEventListener('click', () => elements.fileInput.click());
+        elements.uploadZone.addEventListener('click', (e) => {
+            // Only trigger if clicking on the zone itself, not on the file input or label
+            if (e.target === elements.uploadZone ||
+                e.target.classList.contains('upload-icon') ||
+                e.target.classList.contains('upload-text') ||
+                e.target.classList.contains('upload-or') ||
+                e.target.classList.contains('upload-hint')) {
+                elements.fileInput.click();
+            }
+        });
 
         // Demo buttons
         document.querySelectorAll('.demo-btn').forEach(btn => {
@@ -137,6 +146,8 @@ rs1142345\tTPMT\t0\tTT`
         if (file) {
             processFile(file);
         }
+        // Reset input so the same file can be selected again
+        e.target.value = '';
     }
 
     /**
