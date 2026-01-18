@@ -83,11 +83,19 @@ rs1142345\tTPMT\t0\tTT`
         elements.fileInput = document.getElementById('file-input');
         elements.stepUpload = document.getElementById('step-upload');
         elements.stepProfile = document.getElementById('step-profile');
+        elements.stepSummary = document.getElementById('step-summary');
         elements.stepDrugs = document.getElementById('step-drugs');
         elements.profileLoading = document.getElementById('profile-loading');
         elements.profileResults = document.getElementById('profile-results');
         elements.snpCount = document.getElementById('snp-count');
         elements.geneCards = document.getElementById('gene-cards');
+        elements.summaryCard = document.getElementById('summary-card');
+        elements.totalDrugsCount = document.getElementById('total-drugs-count');
+        elements.statStandard = document.getElementById('stat-standard');
+        elements.statCaution = document.getElementById('stat-caution');
+        elements.statAvoid = document.getElementById('stat-avoid');
+        elements.alertDrugs = document.getElementById('alert-drugs');
+        elements.alertDrugsList = document.getElementById('alert-drugs-list');
         elements.drugSearchInput = document.getElementById('drug-search-input');
         elements.drugSuggestions = document.getElementById('drug-suggestions');
         elements.drugChips = document.getElementById('drug-chips');
@@ -272,8 +280,76 @@ rs1142345\tTPMT\t0\tTT`
             }
         }
 
+        // Calculate and display drug summary
+        displayDrugSummary();
+
         // Show drugs step
         showStep('drugs');
+    }
+
+    /**
+     * Calculate and display drug response summary
+     */
+    function displayDrugSummary() {
+        const drugList = CPICLookup.getDrugList();
+        let standardCount = 0;
+        let cautionCount = 0;
+        let avoidCount = 0;
+        const alertDrugs = [];
+
+        for (const drug of drugList) {
+            const result = CPICLookup.getRecommendation(drug.id, state.geneProfile);
+            if (result && result.recommendation) {
+                const classification = result.recommendation.classification;
+                if (classification === 'standard') {
+                    standardCount++;
+                } else if (classification === 'caution') {
+                    cautionCount++;
+                    alertDrugs.push({
+                        name: drug.name,
+                        classification: 'caution',
+                        label: 'Caution'
+                    });
+                } else if (classification === 'avoid') {
+                    avoidCount++;
+                    alertDrugs.push({
+                        name: drug.name,
+                        classification: 'avoid',
+                        label: 'Avoid'
+                    });
+                }
+            }
+        }
+
+        // Update summary stats
+        const totalDrugs = standardCount + cautionCount + avoidCount;
+        elements.totalDrugsCount.textContent = totalDrugs;
+        elements.statStandard.textContent = standardCount;
+        elements.statCaution.textContent = cautionCount;
+        elements.statAvoid.textContent = avoidCount;
+
+        // Show alert drugs if any
+        if (alertDrugs.length > 0) {
+            // Sort: avoid first, then caution
+            alertDrugs.sort((a, b) => {
+                if (a.classification === 'avoid' && b.classification !== 'avoid') return -1;
+                if (a.classification !== 'avoid' && b.classification === 'avoid') return 1;
+                return a.name.localeCompare(b.name);
+            });
+
+            elements.alertDrugsList.innerHTML = alertDrugs.map(drug => `
+                <li>
+                    <span class="drug-name">${drug.name}</span>
+                    <span class="drug-action ${drug.classification}">${drug.label}</span>
+                </li>
+            `).join('');
+            elements.alertDrugs.classList.remove('hidden');
+        } else {
+            elements.alertDrugs.classList.add('hidden');
+        }
+
+        // Show the summary card
+        elements.summaryCard.classList.remove('hidden');
     }
 
     /**
@@ -469,11 +545,14 @@ rs1142345\tTPMT\t0\tTT`
         }
 
         // Also show previous steps
-        if (stepId === 'profile' || stepId === 'drugs') {
+        if (stepId === 'profile' || stepId === 'summary' || stepId === 'drugs') {
             elements.stepUpload.classList.add('active');
         }
-        if (stepId === 'drugs') {
+        if (stepId === 'summary' || stepId === 'drugs') {
             elements.stepProfile.classList.add('active');
+        }
+        if (stepId === 'drugs') {
+            elements.stepSummary.classList.add('active');
         }
     }
 
@@ -506,7 +585,9 @@ rs1142345\tTPMT\t0\tTT`
         // Hide results
         elements.profileResults.classList.add('hidden');
         elements.drugResult.classList.add('hidden');
+        elements.summaryCard.classList.add('hidden');
         elements.stepProfile.classList.remove('active');
+        elements.stepSummary.classList.remove('active');
         elements.stepDrugs.classList.remove('active');
 
         // Show upload section

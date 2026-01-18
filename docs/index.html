@@ -86,10 +86,46 @@
                 </div>
             </section>
 
-            <!-- Step 3: Drug Lookup -->
-            <section id="step-drugs" class="step">
+            <!-- Results Summary Card -->
+            <section id="step-summary" class="step">
                 <div class="step-header">
                     <span class="step-number">3</span>
+                    <h2>Your Drug Response Summary</h2>
+                </div>
+                <div class="step-content">
+                    <div id="summary-card" class="summary-card hidden">
+                        <p class="summary-intro">Based on your genetic profile, here's how you may respond to <strong id="total-drugs-count">0</strong> medications in our database:</p>
+
+                        <div class="summary-stats">
+                            <div class="summary-stat standard">
+                                <span class="stat-icon">✓</span>
+                                <span class="stat-number" id="stat-standard">0</span>
+                                <span class="stat-label">Standard dosing</span>
+                            </div>
+                            <div class="summary-stat caution">
+                                <span class="stat-icon">⚠</span>
+                                <span class="stat-number" id="stat-caution">0</span>
+                                <span class="stat-label">Use with caution</span>
+                            </div>
+                            <div class="summary-stat avoid">
+                                <span class="stat-icon">✗</span>
+                                <span class="stat-number" id="stat-avoid">0</span>
+                                <span class="stat-label">Avoid or use alternative</span>
+                            </div>
+                        </div>
+
+                        <div id="alert-drugs" class="alert-drugs hidden">
+                            <h4>Medications requiring attention:</h4>
+                            <ul id="alert-drugs-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Drug Lookup -->
+            <section id="step-drugs" class="step">
+                <div class="step-header">
+                    <span class="step-number">4</span>
                     <h2>Check Your Medications</h2>
                 </div>
                 <div class="step-content">
