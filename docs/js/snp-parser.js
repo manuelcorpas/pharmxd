@@ -43,7 +43,26 @@ const SNPParser = (function() {
         'rs1800462': { gene: 'TPMT', allele: '*2', effect: 'no_function', chr: '6', pos: '18143955' },
 
         // UGT1A1
-        'rs887829': { gene: 'UGT1A1', allele: '*80', effect: 'tag_for_28', chr: '2', pos: '234668879' }
+        'rs887829': { gene: 'UGT1A1', allele: '*80', effect: 'tag_for_28', chr: '2', pos: '234668879' },
+        'rs8175347': { gene: 'UGT1A1', allele: '*28', effect: 'decreased_function', chr: '2', pos: '234668879' },
+        'rs4148323': { gene: 'UGT1A1', allele: '*6', effect: 'decreased_function', chr: '2', pos: '234669144' },
+
+        // CYP3A5
+        'rs776746': { gene: 'CYP3A5', allele: '*3', effect: 'no_function', chr: '7', pos: '99672916' },
+        'rs10264272': { gene: 'CYP3A5', allele: '*6', effect: 'no_function', chr: '7', pos: '99665212' },
+        'rs41303343': { gene: 'CYP3A5', allele: '*7', effect: 'no_function', chr: '7', pos: '99664693' },
+
+        // CYP2B6
+        'rs3745274': { gene: 'CYP2B6', allele: '*9', effect: 'decreased_function', chr: '19', pos: '41512841' },
+        'rs28399499': { gene: 'CYP2B6', allele: '*18', effect: 'no_function', chr: '19', pos: '41515263' },
+
+        // NUDT15
+        'rs116855232': { gene: 'NUDT15', allele: '*3', effect: 'no_function', chr: '13', pos: '48611703' },
+        'rs147390019': { gene: 'NUDT15', allele: '*2', effect: 'decreased_function', chr: '13', pos: '48611695' },
+
+        // CYP1A2
+        'rs762551': { gene: 'CYP1A2', allele: '*1F', effect: 'increased_function', chr: '15', pos: '75041917' },
+        'rs2069514': { gene: 'CYP1A2', allele: '*1C', effect: 'decreased_function', chr: '15', pos: '75044934' }
     };
 
     /**

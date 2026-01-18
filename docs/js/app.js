@@ -34,7 +34,12 @@ rs9923231\tVKORC1\t0\tGA
 rs4149056\tSLCO1B1\t0\tTT
 rs3918290\tDPYD\t0\tCC
 rs1800460\tTPMT\t0\tCC
-rs1142345\tTPMT\t0\tTT`
+rs1142345\tTPMT\t0\tTT
+rs887829\tUGT1A1\t0\tCT
+rs776746\tCYP3A5\t0\tAG
+rs3745274\tCYP2B6\t0\tGG
+rs116855232\tNUDT15\t0\tCC
+rs762551\tCYP1A2\t0\tAC`
         },
         john: {
             name: 'John',
@@ -52,7 +57,12 @@ rs9923231\tVKORC1\t0\tGG
 rs4149056\tSLCO1B1\t0\tCC
 rs3918290\tDPYD\t0\tCC
 rs1800460\tTPMT\t0\tCC
-rs1142345\tTPMT\t0\tTT`
+rs1142345\tTPMT\t0\tTT
+rs887829\tUGT1A1\t0\tTT
+rs776746\tCYP3A5\t0\tGG
+rs3745274\tCYP2B6\t0\tGT
+rs116855232\tNUDT15\t0\tCC
+rs762551\tCYP1A2\t0\tCC`
         }
     };
 
@@ -296,7 +306,7 @@ rs1142345\tTPMT\t0\tTT`
         // Generate gene cards
         elements.geneCards.innerHTML = '';
 
-        const geneOrder = ['CYP2C19', 'CYP2D6', 'CYP2C9', 'VKORC1', 'SLCO1B1', 'DPYD', 'TPMT'];
+        const geneOrder = ['CYP2C19', 'CYP2D6', 'CYP2C9', 'VKORC1', 'SLCO1B1', 'DPYD', 'TPMT', 'UGT1A1', 'CYP3A5', 'CYP2B6', 'NUDT15', 'CYP1A2'];
 
         for (const gene of geneOrder) {
             const profile = state.geneProfile[gene];
@@ -619,7 +629,7 @@ rs1142345\tTPMT\t0\tTT`
         if (!state.geneProfile) return;
 
         // Populate genes
-        const geneOrder = ['CYP2C19', 'CYP2D6', 'CYP2C9', 'VKORC1', 'SLCO1B1', 'DPYD', 'TPMT'];
+        const geneOrder = ['CYP2C19', 'CYP2D6', 'CYP2C9', 'VKORC1', 'SLCO1B1', 'DPYD', 'TPMT', 'UGT1A1', 'CYP3A5', 'CYP2B6', 'NUDT15', 'CYP1A2'];
         const geneTags = [];
 
         for (const gene of geneOrder) {

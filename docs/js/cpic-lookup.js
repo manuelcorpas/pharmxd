@@ -979,6 +979,960 @@ const CPICLookup = (function() {
                 }
             },
             fdaLabel: 'Patients with inherited little or no TPMT activity are at increased risk for severe myelosuppression. Consider TPMT testing.'
+        },
+
+        // UGT1A1 drugs
+        irinotecan: {
+            name: 'Irinotecan',
+            brandNames: ['Camptosar', 'Onivyde'],
+            drugClass: 'Topoisomerase Inhibitor (Chemotherapy)',
+            gene: 'UGT1A1',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-irinotecan-and-ugt1a1/',
+            lastUpdated: '2020',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose per protocol.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal UGT1A1 activity.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Reduce starting dose by one dose level. Monitor closely for neutropenia.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Reduced UGT1A1 activity; increased toxicity risk.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Reduce starting dose by at least 30%. Intensive monitoring required.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Poor UGT1A1 activity; high risk of severe neutropenia and diarrhea.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'Individuals who are homozygous for the UGT1A1*28 allele are at increased risk for neutropenia. A reduced initial dose should be considered.'
+        },
+
+        atazanavir: {
+            name: 'Atazanavir',
+            brandNames: ['Reyataz'],
+            drugClass: 'HIV Protease Inhibitor',
+            gene: 'UGT1A1',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-atazanavir-and-ugt1a1/',
+            lastUpdated: '2016',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal bilirubin metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose. Inform patient of higher jaundice risk.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Moderate increase in unconjugated bilirubin.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider alternative if jaundice is a concern. Otherwise use standard dose with counseling.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'High risk of hyperbilirubinemia (jaundice). Cosmetic, not harmful.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'Patients with UGT1A1*28 allele have higher bilirubin levels.'
+        },
+
+        // CYP3A5 drugs
+        tacrolimus: {
+            name: 'Tacrolimus',
+            brandNames: ['Prograf', 'Envarsus', 'Astagraf'],
+            drugClass: 'Immunosuppressant (Calcineurin Inhibitor)',
+            gene: 'CYP3A5',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/',
+            lastUpdated: '2015',
+            recommendations: {
+                extensive_metabolizer: {
+                    recommendation: 'Increase starting dose by 1.5-2x. Titrate based on trough levels.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'CYP3A5 expressors have higher tacrolimus clearance; may need higher doses.',
+                    icon: '⚠'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use standard starting dose. Titrate based on trough levels.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Intermediate tacrolimus metabolism.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use standard starting dose. Non-expressors typically achieve targets with standard dosing.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Lower tacrolimus clearance; standard doses usually sufficient.',
+                    icon: '✓'
+                }
+            },
+            fdaLabel: 'CYP3A5 expressors may require higher doses of tacrolimus to achieve target concentrations.'
+        },
+
+        // CYP2B6 drugs
+        efavirenz: {
+            name: 'Efavirenz',
+            brandNames: ['Sustiva', 'Stocrin'],
+            drugClass: 'NNRTI (HIV Antiretroviral)',
+            gene: 'CYP2B6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-efavirenz-and-cyp2b6/',
+            lastUpdated: '2019',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use 600 mg daily.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal efavirenz metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use 600 mg daily. Monitor for CNS side effects.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly increased efavirenz exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider 400 mg daily or alternative antiretroviral. Monitor for CNS toxicity.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Significantly increased efavirenz exposure; higher CNS toxicity risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2B6 polymorphisms affect efavirenz plasma levels.'
+        },
+
+        // CYP1A2 drugs
+        clozapine: {
+            name: 'Clozapine',
+            brandNames: ['Clozaril', 'FazaClo'],
+            drugClass: 'Atypical Antipsychotic',
+            gene: 'CYP1A2',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'May require higher doses. Titrate based on clinical response.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Faster clozapine metabolism; potentially subtherapeutic levels.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose. May need lower maintenance dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly decreased metabolism.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Reduce dose by 30-50%. Monitor for adverse effects.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Substantially decreased metabolism; increased toxicity risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP1A2 is a major enzyme for clozapine metabolism.'
+        },
+
+        // Additional CYP2D6 drugs
+        risperidone: {
+            name: 'Risperidone',
+            brandNames: ['Risperdal'],
+            drugClass: 'Atypical Antipsychotic',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'May need higher dose. Monitor efficacy.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Lower active moiety concentrations.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly increased concentrations.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider 30-50% dose reduction or alternative.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Higher active moiety concentrations; increased side effect risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2D6 poor metabolizers have higher risperidone concentrations.'
+        },
+
+        aripiprazole: {
+            name: 'Aripiprazole',
+            brandNames: ['Abilify', 'Aristada'],
+            drugClass: 'Atypical Antipsychotic',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use recommended dose. Efficacy may be reduced.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Lower aripiprazole exposure.',
+                    icon: '✓'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Reduce dose to 75% of normal (max 10 mg/day for oral).',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Substantially increased exposure.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'Reduce aripiprazole dose to 50% of usual dose in CYP2D6 poor metabolizers.'
+        },
+
+        haloperidol: {
+            name: 'Haloperidol',
+            brandNames: ['Haldol'],
+            drugClass: 'Typical Antipsychotic',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'May need higher dose for efficacy.',
+                    classification: 'caution',
+                    strength: 'Optional',
+                    implications: 'Faster metabolism may reduce efficacy.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Normal to slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider 50% dose reduction. Monitor for EPS and QT prolongation.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased haloperidol exposure; higher toxicity risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2D6 poor metabolizers may have increased haloperidol exposure.'
+        },
+
+        venlafaxine: {
+            name: 'Venlafaxine',
+            brandNames: ['Effexor', 'Effexor XR'],
+            drugClass: 'SNRI Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2020',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Active metabolite compensates for faster parent metabolism.',
+                    icon: '✓'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal overall exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use recommended dose. Monitor for side effects.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Higher parent drug but similar total active moiety.',
+                    icon: '✓'
+                }
+            },
+            fdaLabel: 'CYP2D6 poor metabolizers have higher venlafaxine and lower O-desmethylvenlafaxine concentrations.'
+        },
+
+        atomoxetine: {
+            name: 'Atomoxetine',
+            brandNames: ['Strattera'],
+            drugClass: 'ADHD Medication (NRI)',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-atomoxetine-and-cyp2d6/',
+            lastUpdated: '2019',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use recommended dose. May need higher dose for efficacy.',
+                    classification: 'caution',
+                    strength: 'Optional',
+                    implications: 'Lower atomoxetine exposure.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Start at lowest dose. Increase slowly. Max dose may be lower.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Substantially increased exposure (5-10x); higher side effect risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2D6 poor metabolizers have 5-fold higher atomoxetine AUC. Dosage adjustment may be necessary.'
+        },
+
+        hydrocodone: {
+            name: 'Hydrocodone',
+            brandNames: ['Vicodin', 'Norco', 'Lortab'],
+            drugClass: 'Opioid Analgesic',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/',
+            lastUpdated: '2019',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use with caution. Consider alternative analgesic.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased conversion to hydromorphone; possible enhanced effects.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use label-recommended dosing.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use label-recommended dosing.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Slightly reduced conversion to active metabolite.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use with caution. May have reduced efficacy. Consider alternative.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Reduced conversion to hydromorphone; may have reduced analgesia.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'Hydrocodone is metabolized by CYP2D6 to hydromorphone.'
+        },
+
+        oxycodone: {
+            name: 'Oxycodone',
+            brandNames: ['OxyContin', 'Percocet', 'Roxicodone'],
+            drugClass: 'Opioid Analgesic',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use recommended dose with caution.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Possible increased active metabolite formation.',
+                    icon: '✓'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal efficacy expected.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use recommended dose. Efficacy generally maintained.',
+                    classification: 'standard',
+                    strength: 'Moderate',
+                    implications: 'Minor CYP2D6 pathway; minimal clinical impact.',
+                    icon: '✓'
+                }
+            },
+            fdaLabel: 'CYP2D6 converts oxycodone to oxymorphone. Clinical significance unclear.'
+        },
+
+        // Additional CYP2C19 drugs
+        lansoprazole: {
+            name: 'Lansoprazole',
+            brandNames: ['Prevacid'],
+            drugClass: 'Proton Pump Inhibitor',
+            gene: 'CYP2C19',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-proton-pump-inhibitors-and-cyp2c19/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'For H. pylori: increase dose. For GERD: standard dose; increase if needed.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased metabolism may reduce efficacy.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'For chronic use (>12 weeks): consider 50% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased exposure with long-term use.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2C19 poor metabolizers have higher lansoprazole exposure.'
+        },
+
+        voriconazole: {
+            name: 'Voriconazole',
+            brandNames: ['Vfend'],
+            drugClass: 'Azole Antifungal',
+            gene: 'CYP2C19',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use alternative antifungal if possible. If voriconazole necessary, use therapeutic drug monitoring.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced exposure; likely subtherapeutic levels.',
+                    icon: '✗'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal to slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use standard loading dose, then reduce maintenance dose by 50%.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Substantially increased exposure; higher toxicity risk.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2C19 poor metabolizers have 4-fold higher voriconazole exposure. Consider dose reduction.'
+        },
+
+        // Additional CYP2C9 drugs
+        flurbiprofen: {
+            name: 'Flurbiprofen',
+            brandNames: ['Ansaid', 'Ocufen'],
+            drugClass: 'NSAID',
+            gene: 'CYP2C9',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-nsaids-and-cyp2c9/',
+            lastUpdated: '2020',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use lowest effective dose for shortest duration.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Reduced clearance; higher exposure.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Use alternative NSAID (e.g., aspirin, ketorolac) or reduce dose significantly.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced clearance; high GI/CV risk.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'CYP2C9 metabolizes flurbiprofen.'
+        },
+
+        piroxicam: {
+            name: 'Piroxicam',
+            brandNames: ['Feldene'],
+            drugClass: 'NSAID',
+            gene: 'CYP2C9',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-nsaids-and-cyp2c9/',
+            lastUpdated: '2020',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use lowest effective dose for shortest duration.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Reduced clearance.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Avoid piroxicam. Choose alternative NSAID.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced clearance; high toxicity risk.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'CYP2C9 is involved in piroxicam metabolism.'
+        },
+
+        meloxicam: {
+            name: 'Meloxicam',
+            brandNames: ['Mobic', 'Vivlodex'],
+            drugClass: 'NSAID (COX-2 preferential)',
+            gene: 'CYP2C9',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-nsaids-and-cyp2c9/',
+            lastUpdated: '2020',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Start with lower dose. Use lowest effective dose.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Reduced clearance.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Start with 50% of lowest recommended dose. Consider alternative.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced clearance.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'CYP2C9 poor metabolizers have higher meloxicam exposure.'
+        },
+
+        // Additional TPMT/NUDT15 drugs
+        thioguanine: {
+            name: 'Thioguanine',
+            brandNames: ['Tabloid'],
+            drugClass: 'Thiopurine Antimetabolite',
+            gene: 'TPMT',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/',
+            lastUpdated: '2018',
+            recommendations: {
+                normal_metabolizer: {
+                    recommendation: 'Start with normal dose per protocol.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal risk of myelosuppression.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Reduce starting dose by 30-50%. Adjust based on myelosuppression.',
+                    classification: 'caution',
+                    strength: 'Strong',
+                    implications: 'Moderate risk of myelosuppression.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider alternative agents. If thioguanine required, reduce dose by 90% and monitor closely.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'High risk of life-threatening myelosuppression.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'TPMT-deficient patients may be at increased risk of myelosuppression.'
+        },
+
+        // Additional CYP2D6 tricyclic antidepressants
+        desipramine: {
+            name: 'Desipramine',
+            brandNames: ['Norpramin'],
+            drugClass: 'Tricyclic Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Avoid desipramine. Consider alternative not metabolized by CYP2D6.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Increased metabolism to potentially cardiotoxic metabolite.',
+                    icon: '✗'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Consider 25% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Moderately reduced metabolism.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Avoid desipramine. Consider alternative not metabolized by CYP2D6.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced metabolism; high risk of side effects.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'CYP2D6 metabolizes desipramine.'
+        },
+
+        imipramine: {
+            name: 'Imipramine',
+            brandNames: ['Tofranil'],
+            drugClass: 'Tricyclic Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Avoid imipramine. Use alternative not metabolized by CYP2D6.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially increased metabolism; likely therapeutic failure.',
+                    icon: '✗'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Consider 25% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Moderately reduced metabolism.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Avoid imipramine. Use alternative not metabolized by CYP2D6.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced metabolism; high toxicity risk.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'Imipramine is metabolized by CYP2D6.'
+        },
+
+        doxepin: {
+            name: 'Doxepin',
+            brandNames: ['Sinequan', 'Silenor'],
+            drugClass: 'Tricyclic Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Consider alternative drug not metabolized by CYP2D6.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Reduced plasma concentrations; possible reduced efficacy.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Consider 25% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Moderately reduced metabolism.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider alternative drug. If doxepin used, reduce dose by 50%.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced metabolism; high side effect risk.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'CYP2D6 poor metabolizers have higher doxepin exposure.'
+        },
+
+        trimipramine: {
+            name: 'Trimipramine',
+            brandNames: ['Surmontil'],
+            drugClass: 'Tricyclic Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use alternative drug not metabolized by CYP2D6.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Reduced plasma concentrations.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Consider 25% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Moderately reduced metabolism.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Consider 50% dose reduction and monitor closely.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced metabolism.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'Trimipramine is metabolized by CYP2D6.'
+        },
+
+        clomipramine: {
+            name: 'Clomipramine',
+            brandNames: ['Anafranil'],
+            drugClass: 'Tricyclic Antidepressant',
+            gene: 'CYP2D6',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/',
+            lastUpdated: '2016',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'Use alternative drug not metabolized by CYP2D6.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced plasma concentrations; therapeutic failure likely.',
+                    icon: '✗'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Consider 25% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Moderately reduced metabolism.',
+                    icon: '⚠'
+                },
+                poor_metabolizer: {
+                    recommendation: 'Avoid clomipramine or reduce dose by 50% and monitor closely.',
+                    classification: 'avoid',
+                    strength: 'Strong',
+                    implications: 'Substantially reduced metabolism.',
+                    icon: '✗'
+                }
+            },
+            fdaLabel: 'Clomipramine is metabolized by CYP2D6.'
+        },
+
+        // Additional PPIs
+        esomeprazole: {
+            name: 'Esomeprazole',
+            brandNames: ['Nexium'],
+            drugClass: 'Proton Pump Inhibitor',
+            gene: 'CYP2C19',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-proton-pump-inhibitors-and-cyp2c19/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'For H. pylori: increase dose or use alternative. For GERD: increase if inadequate response.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased metabolism may reduce efficacy.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal to slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'For chronic use (>12 weeks): consider 50% dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Substantially increased exposure.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2C19 poor metabolizers have higher esomeprazole exposure.'
+        },
+
+        dexlansoprazole: {
+            name: 'Dexlansoprazole',
+            brandNames: ['Dexilant'],
+            drugClass: 'Proton Pump Inhibitor',
+            gene: 'CYP2C19',
+            guidelineUrl: 'https://cpicpgx.org/guidelines/guideline-for-proton-pump-inhibitors-and-cyp2c19/',
+            lastUpdated: '2021',
+            recommendations: {
+                ultrarapid_metabolizer: {
+                    recommendation: 'For H. pylori: consider higher dose or alternative.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased metabolism may reduce efficacy.',
+                    icon: '⚠'
+                },
+                normal_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal metabolism.',
+                    icon: '✓'
+                },
+                intermediate_metabolizer: {
+                    recommendation: 'Use recommended dose.',
+                    classification: 'standard',
+                    strength: 'Strong',
+                    implications: 'Normal to slightly increased exposure.',
+                    icon: '✓'
+                },
+                poor_metabolizer: {
+                    recommendation: 'For chronic use: consider dose reduction.',
+                    classification: 'caution',
+                    strength: 'Moderate',
+                    implications: 'Increased drug exposure.',
+                    icon: '⚠'
+                }
+            },
+            fdaLabel: 'CYP2C19 metabolizes dexlansoprazole.'
         }
     };
 

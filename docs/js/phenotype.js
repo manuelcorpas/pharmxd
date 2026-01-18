@@ -215,6 +215,147 @@ const PhenotypeCaller = (function() {
                     activity: 'none'
                 }
             }
+        },
+
+        UGT1A1: {
+            name: 'UDP-Glucuronosyltransferase 1A1',
+            function: 'Irinotecan and bilirubin metabolism',
+            refAllele: '*1',
+            variants: {
+                'rs8175347': { allele: '*28', altBase: 'TA7', effect: 'decreased_function' },
+                'rs4148323': { allele: '*6', altBase: 'A', effect: 'decreased_function' }
+            },
+            phenotypeRules: {
+                'normal_metabolizer': {
+                    conditions: ['*1/*1'],
+                    description: 'Normal Metabolizer',
+                    activity: 'normal'
+                },
+                'intermediate_metabolizer': {
+                    conditions: ['*1/*28', '*1/*6', '*6/*28'],
+                    description: 'Intermediate Metabolizer',
+                    activity: 'decreased'
+                },
+                'poor_metabolizer': {
+                    conditions: ['*28/*28', '*6/*6'],
+                    description: 'Poor Metabolizer',
+                    activity: 'none'
+                }
+            }
+        },
+
+        CYP3A5: {
+            name: 'Cytochrome P450 3A5',
+            function: 'Tacrolimus metabolism',
+            refAllele: '*1',
+            variants: {
+                'rs776746': { allele: '*3', altBase: 'G', effect: 'no_function' },
+                'rs10264272': { allele: '*6', altBase: 'A', effect: 'no_function' },
+                'rs41303343': { allele: '*7', altBase: 'INS', effect: 'no_function' }
+            },
+            phenotypeRules: {
+                'extensive_metabolizer': {
+                    conditions: ['*1/*1'],
+                    description: 'CYP3A5 Expressor',
+                    activity: 'normal'
+                },
+                'intermediate_metabolizer': {
+                    conditions: ['*1/*3', '*1/*6', '*1/*7'],
+                    description: 'Intermediate Expressor',
+                    activity: 'decreased'
+                },
+                'poor_metabolizer': {
+                    conditions: ['*3/*3', '*3/*6', '*6/*6', '*3/*7'],
+                    description: 'CYP3A5 Non-expressor',
+                    activity: 'none'
+                }
+            }
+        },
+
+        CYP2B6: {
+            name: 'Cytochrome P450 2B6',
+            function: 'Efavirenz and methadone metabolism',
+            refAllele: '*1',
+            variants: {
+                'rs3745274': { allele: '*9', altBase: 'T', effect: 'decreased_function' },
+                'rs28399499': { allele: '*18', altBase: 'C', effect: 'no_function' }
+            },
+            phenotypeRules: {
+                'normal_metabolizer': {
+                    conditions: ['*1/*1'],
+                    description: 'Normal Metabolizer',
+                    activity: 'normal'
+                },
+                'intermediate_metabolizer': {
+                    conditions: ['*1/*9', '*1/*18', '*9/*18'],
+                    description: 'Intermediate Metabolizer',
+                    activity: 'decreased'
+                },
+                'poor_metabolizer': {
+                    conditions: ['*9/*9', '*18/*18'],
+                    description: 'Poor Metabolizer',
+                    activity: 'none'
+                }
+            }
+        },
+
+        NUDT15: {
+            name: 'Nudix Hydrolase 15',
+            function: 'Thiopurine metabolism',
+            refAllele: '*1',
+            variants: {
+                'rs116855232': { allele: '*3', altBase: 'T', effect: 'no_function' },
+                'rs147390019': { allele: '*2', altBase: 'A', effect: 'decreased_function' }
+            },
+            phenotypeRules: {
+                'normal_metabolizer': {
+                    conditions: ['*1/*1'],
+                    description: 'Normal Metabolizer',
+                    activity: 'normal'
+                },
+                'intermediate_metabolizer': {
+                    conditions: ['*1/*2', '*1/*3'],
+                    description: 'Intermediate Metabolizer',
+                    activity: 'decreased'
+                },
+                'poor_metabolizer': {
+                    conditions: ['*2/*2', '*2/*3', '*3/*3'],
+                    description: 'Poor Metabolizer',
+                    activity: 'none'
+                }
+            }
+        },
+
+        CYP1A2: {
+            name: 'Cytochrome P450 1A2',
+            function: 'Caffeine and clozapine metabolism',
+            refAllele: '*1',
+            variants: {
+                'rs762551': { allele: '*1F', altBase: 'A', effect: 'increased_function' },
+                'rs2069514': { allele: '*1C', altBase: 'A', effect: 'decreased_function' }
+            },
+            phenotypeRules: {
+                'ultrarapid_metabolizer': {
+                    conditions: ['*1F/*1F'],
+                    description: 'Ultrarapid Metabolizer',
+                    activity: 'increased'
+                },
+                'normal_metabolizer': {
+                    conditions: ['*1/*1', '*1/*1F'],
+                    description: 'Normal Metabolizer',
+                    activity: 'normal'
+                },
+                'intermediate_metabolizer': {
+                    conditions: ['*1/*1C', '*1C/*1F'],
+                    description: 'Intermediate Metabolizer',
+                    activity: 'decreased'
+                },
+                'poor_metabolizer': {
+                    conditions: ['*1C/*1C'],
+                    description: 'Poor Metabolizer',
+                    activity: 'none'
+                }
+            }
         }
     };
 
