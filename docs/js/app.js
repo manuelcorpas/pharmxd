@@ -116,13 +116,13 @@ rs762551\tCYP1A2\t0\tCC`
     function applyLanguage() {
         const lang = I18n.getLang();
 
-        // Update language toggle button
+        // Update language toggle button (show flag of language to switch TO)
         const langToggle = document.getElementById('lang-toggle');
         if (langToggle) {
             const flag = langToggle.querySelector('.lang-flag');
             const code = langToggle.querySelector('.lang-code');
-            if (flag) flag.textContent = lang === 'en' ? '🇬🇧' : '🇪🇸';
-            if (code) code.textContent = lang === 'en' ? 'EN' : 'ES';
+            if (flag) flag.textContent = lang === 'en' ? '🇪🇸' : '🇬🇧';
+            if (code) code.textContent = lang === 'en' ? 'ES' : 'EN';
         }
 
         // Update all elements with data-i18n attribute
