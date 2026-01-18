@@ -521,6 +521,195 @@ body {
     color: var(--danger);
 }
 
+/* Wallet Card Button */
+.wallet-card-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.wallet-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Wallet Modal */
+.wallet-modal-content {
+    max-width: 400px;
+    padding: 1.5rem;
+}
+
+.wallet-card-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.wallet-card {
+    width: 100%;
+    max-width: 340px;
+    background: linear-gradient(145deg, #1e3a5f 0%, #0d1b2a 100%);
+    border-radius: 16px;
+    padding: 1.25rem;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    font-size: 0.875rem;
+}
+
+.wallet-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wallet-logo {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.wallet-title {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.wallet-card-body {
+    min-height: 120px;
+}
+
+.wallet-section {
+    margin-bottom: 1rem;
+}
+
+.wallet-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+    margin-bottom: 0.375rem;
+}
+
+.wallet-genes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.wallet-gene-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: monospace;
+}
+
+.wallet-gene-tag.warning {
+    background: rgba(202, 138, 4, 0.3);
+    border: 1px solid rgba(202, 138, 4, 0.5);
+}
+
+.wallet-gene-tag.danger {
+    background: rgba(220, 38, 38, 0.3);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+}
+
+.wallet-avoid-section {
+    background: rgba(220, 38, 38, 0.15);
+    margin: 0 -1.25rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid rgba(220, 38, 38, 0.3);
+    border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.wallet-avoid-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.wallet-avoid-drug {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.wallet-card-footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wallet-disclaimer {
+    font-size: 0.625rem;
+    opacity: 0.7;
+    max-width: 60%;
+}
+
+.wallet-url {
+    font-size: 0.6875rem;
+    opacity: 0.5;
+}
+
+.wallet-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.wallet-action-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.wallet-action-btn:hover {
+    background: var(--gray-200);
+}
+
+/* Print styles for wallet card */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .wallet-card, .wallet-card * {
+        visibility: visible;
+    }
+    .wallet-card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 3.375in;
+        height: 2.125in;
+        box-shadow: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
 /* Drug Search */
 .drug-search {
     position: relative;

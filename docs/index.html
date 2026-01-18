@@ -118,9 +118,46 @@
                             <h4>Medications requiring attention:</h4>
                             <ul id="alert-drugs-list"></ul>
                         </div>
+
+                        <button type="button" class="wallet-card-btn" id="wallet-card-btn">
+                            💳 Get Your Wallet Card
+                        </button>
                     </div>
                 </div>
             </section>
+
+            <!-- Wallet Card Modal -->
+            <div id="wallet-modal" class="modal hidden">
+                <div class="modal-content wallet-modal-content">
+                    <button class="modal-close" id="wallet-modal-close" aria-label="Close">&times;</button>
+                    <div class="wallet-card-container">
+                        <div class="wallet-card" id="wallet-card">
+                            <div class="wallet-card-header">
+                                <div class="wallet-logo">💊 PharmXD</div>
+                                <div class="wallet-title">Pharmacogenetic Alert Card</div>
+                            </div>
+                            <div class="wallet-card-body">
+                                <div class="wallet-section">
+                                    <div class="wallet-label">My Genetic Profile</div>
+                                    <div class="wallet-genes" id="wallet-genes"></div>
+                                </div>
+                                <div class="wallet-section wallet-avoid-section">
+                                    <div class="wallet-label">⚠️ Medications Requiring Attention</div>
+                                    <div class="wallet-avoid-list" id="wallet-avoid-list"></div>
+                                </div>
+                            </div>
+                            <div class="wallet-card-footer">
+                                <div class="wallet-disclaimer">Show this card to your doctor or pharmacist</div>
+                                <div class="wallet-url">pharmxd.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wallet-actions">
+                        <button type="button" class="wallet-action-btn" id="wallet-print-btn">🖨️ Print Card</button>
+                        <button type="button" class="wallet-action-btn" id="wallet-screenshot-btn">📱 Save as Image</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Step 4: Drug Lookup -->
             <section id="step-drugs" class="step">
@@ -185,6 +222,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="js/snp-parser.js"></script>
     <script src="js/phenotype.js"></script>
     <script src="js/cpic-lookup.js"></script>

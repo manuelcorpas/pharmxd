@@ -96,6 +96,13 @@ rs1142345\tTPMT\t0\tTT`
         elements.statAvoid = document.getElementById('stat-avoid');
         elements.alertDrugs = document.getElementById('alert-drugs');
         elements.alertDrugsList = document.getElementById('alert-drugs-list');
+        elements.walletCardBtn = document.getElementById('wallet-card-btn');
+        elements.walletModal = document.getElementById('wallet-modal');
+        elements.walletModalClose = document.getElementById('wallet-modal-close');
+        elements.walletGenes = document.getElementById('wallet-genes');
+        elements.walletAvoidList = document.getElementById('wallet-avoid-list');
+        elements.walletPrintBtn = document.getElementById('wallet-print-btn');
+        elements.walletScreenshotBtn = document.getElementById('wallet-screenshot-btn');
         elements.drugSearchInput = document.getElementById('drug-search-input');
         elements.drugSuggestions = document.getElementById('drug-suggestions');
         elements.drugChips = document.getElementById('drug-chips');
@@ -161,6 +168,25 @@ rs1142345\tTPMT\t0\tTT`
         elements.modal.addEventListener('click', (e) => {
             if (e.target === elements.modal) closeModal();
         });
+
+        // Wallet card
+        if (elements.walletCardBtn) {
+            elements.walletCardBtn.addEventListener('click', showWalletCard);
+        }
+        if (elements.walletModalClose) {
+            elements.walletModalClose.addEventListener('click', closeWalletModal);
+        }
+        if (elements.walletModal) {
+            elements.walletModal.addEventListener('click', (e) => {
+                if (e.target === elements.walletModal) closeWalletModal();
+            });
+        }
+        if (elements.walletPrintBtn) {
+            elements.walletPrintBtn.addEventListener('click', printWalletCard);
+        }
+        if (elements.walletScreenshotBtn) {
+            elements.walletScreenshotBtn.addEventListener('click', saveWalletCardAsImage);
+        }
     }
 
     /**
@@ -584,6 +610,103 @@ rs1142345\tTPMT\t0\tTT`
      */
     function closeModal() {
         elements.modal.classList.add('hidden');
+    }
+
+    /**
+     * Show wallet card modal
+     */
+    function showWalletCard() {
+        if (!state.geneProfile) return;
+
+        // Populate genes
+        const geneOrder = ['CYP2C19', 'CYP2D6', 'CYP2C9', 'VKORC1', 'SLCO1B1', 'DPYD', 'TPMT'];
+        const geneTags = [];
+
+        for (const gene of geneOrder) {
+            const profile = state.geneProfile[gene];
+            if (profile && profile.phenotype) {
+                let tagClass = '';
+                if (profile.phenotype === 'poor_metabolizer') {
+                    tagClass = 'danger';
+                } else if (profile.phenotype === 'intermediate_metabolizer') {
+                    tagClass = 'warning';
+                }
+                geneTags.push(`<span class="wallet-gene-tag ${tagClass}">${gene}: ${profile.diplotype || 'N/A'}</span>`);
+            }
+        }
+        elements.walletGenes.innerHTML = geneTags.join('');
+
+        // Populate drugs to avoid/caution
+        const drugList = CPICLookup.getDrugList();
+        const alertDrugs = [];
+
+        for (const drug of drugList) {
+            const result = CPICLookup.getRecommendation(drug.id, state.geneProfile);
+            if (result && result.recommendation) {
+                const classification = result.recommendation.classification;
+                if (classification === 'avoid' || classification === 'caution') {
+                    alertDrugs.push({
+                        name: drug.name,
+                        classification: classification
+                    });
+                }
+            }
+        }
+
+        // Sort: avoid first
+        alertDrugs.sort((a, b) => {
+            if (a.classification === 'avoid' && b.classification !== 'avoid') return -1;
+            if (a.classification !== 'avoid' && b.classification === 'avoid') return 1;
+            return a.name.localeCompare(b.name);
+        });
+
+        if (alertDrugs.length > 0) {
+            elements.walletAvoidList.innerHTML = alertDrugs.map(drug =>
+                `<span class="wallet-avoid-drug">${drug.name}</span>`
+            ).join('');
+        } else {
+            elements.walletAvoidList.innerHTML = '<span class="wallet-avoid-drug">None identified</span>';
+        }
+
+        // Show modal
+        elements.walletModal.classList.remove('hidden');
+    }
+
+    /**
+     * Close wallet modal
+     */
+    function closeWalletModal() {
+        elements.walletModal.classList.add('hidden');
+    }
+
+    /**
+     * Print wallet card
+     */
+    function printWalletCard() {
+        window.print();
+    }
+
+    /**
+     * Save wallet card as image
+     */
+    function saveWalletCardAsImage() {
+        const walletCard = document.getElementById('wallet-card');
+
+        // Use html2canvas if available, otherwise show instructions
+        if (typeof html2canvas !== 'undefined') {
+            html2canvas(walletCard, {
+                backgroundColor: null,
+                scale: 2
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'pharmxd-wallet-card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        } else {
+            // Fallback: show instructions
+            alert('To save as image:\n\n1. Take a screenshot of the card\n2. Or use Print → Save as PDF\n\nTip: On iPhone, press Power + Volume Up');
+        }
     }
 
     /**
