@@ -101,29 +101,36 @@ rs1142345\tTPMT\t0\tTT`
      * Set up event listeners
      */
     function setupEventListeners() {
-        // File upload
-        elements.fileInput.addEventListener('change', handleFileSelect);
+        // File upload - use direct event binding
+        console.log('Setting up file input listener on:', elements.fileInput);
+
+        elements.fileInput.addEventListener('change', function(e) {
+            console.log('File input change event fired');
+            handleFileSelect(e);
+        });
+
+        // Upload button click
+        const uploadBtn = document.getElementById('upload-btn');
+        if (uploadBtn) {
+            uploadBtn.addEventListener('click', function(e) {
+                console.log('Upload button clicked');
+                e.stopPropagation();
+                elements.fileInput.click();
+            });
+        }
 
         // Drag and drop
         elements.uploadZone.addEventListener('dragover', handleDragOver);
         elements.uploadZone.addEventListener('dragleave', handleDragLeave);
         elements.uploadZone.addEventListener('drop', handleDrop);
 
-        // Stop the label from triggering the upload zone click
-        const uploadButton = document.querySelector('.upload-button');
-        if (uploadButton) {
-            uploadButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        }
-
         // Click anywhere in zone (except button) opens file dialog
-        elements.uploadZone.addEventListener('click', (e) => {
-            // Don't trigger if clicking on file input or label
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL' ||
-                e.target.classList.contains('upload-button')) {
+        elements.uploadZone.addEventListener('click', function(e) {
+            console.log('Upload zone clicked, target:', e.target.tagName, e.target.id);
+            if (e.target.id === 'upload-btn' || e.target.id === 'file-input') {
                 return;
             }
+            console.log('Triggering file input from zone click');
             elements.fileInput.click();
         });
 
