@@ -108,15 +108,23 @@ rs1142345\tTPMT\t0\tTT`
         elements.uploadZone.addEventListener('dragover', handleDragOver);
         elements.uploadZone.addEventListener('dragleave', handleDragLeave);
         elements.uploadZone.addEventListener('drop', handleDrop);
+
+        // Stop the label from triggering the upload zone click
+        const uploadButton = document.querySelector('.upload-button');
+        if (uploadButton) {
+            uploadButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Click anywhere in zone (except button) opens file dialog
         elements.uploadZone.addEventListener('click', (e) => {
-            // Only trigger if clicking on the zone itself, not on the file input or label
-            if (e.target === elements.uploadZone ||
-                e.target.classList.contains('upload-icon') ||
-                e.target.classList.contains('upload-text') ||
-                e.target.classList.contains('upload-or') ||
-                e.target.classList.contains('upload-hint')) {
-                elements.fileInput.click();
+            // Don't trigger if clicking on file input or label
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL' ||
+                e.target.classList.contains('upload-button')) {
+                return;
             }
+            elements.fileInput.click();
         });
 
         // Demo buttons
@@ -142,9 +150,13 @@ rs1142345\tTPMT\t0\tTT`
      * Handle file selection
      */
     function handleFileSelect(e) {
+        console.log('handleFileSelect triggered', e.target.files);
         const file = e.target.files[0];
         if (file) {
+            console.log('Processing file:', file.name, file.size, 'bytes');
             processFile(file);
+        } else {
+            console.log('No file selected');
         }
         // Reset input so the same file can be selected again
         e.target.value = '';
@@ -183,21 +195,28 @@ rs1142345\tTPMT\t0\tTT`
      * Process uploaded file
      */
     async function processFile(file) {
+        console.log('processFile started for:', file.name);
+
         showStep('profile');
         elements.profileLoading.classList.remove('hidden');
         elements.profileResults.classList.add('hidden');
 
         try {
+            console.log('Calling SNPParser.parseFile...');
             const result = await SNPParser.parseFile(file);
+            console.log('SNPParser result:', result);
+
             state.pgxSNPs = result.pgxSNPs;
             state.fileName = result.fileName;
             state.totalSNPs = result.totalSNPs;
             state.pgxCount = result.pgxCount;
 
-            // Get phenotype profile
+            console.log('Calling PhenotypeCaller.getFullProfile...');
             state.geneProfile = PhenotypeCaller.getFullProfile(result.pgxSNPs);
+            console.log('Gene profile:', state.geneProfile);
 
             displayProfile();
+            console.log('processFile completed successfully');
         } catch (error) {
             console.error('Error processing file:', error);
             alert('Error processing file: ' + error.message);
