@@ -82,7 +82,63 @@ rs762551\tCYP1A2\t0\tCC`
         // Initialize drug search
         initDrugSearch();
 
+        // Initialize language
+        initLanguage();
+
         console.log('PharmXD initialized');
+    }
+
+    /**
+     * Initialize language support
+     */
+    function initLanguage() {
+        // Apply current language
+        applyLanguage();
+
+        // Set up language toggle
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', toggleLanguage);
+        }
+    }
+
+    /**
+     * Toggle between languages
+     */
+    function toggleLanguage() {
+        I18n.toggleLang();
+        applyLanguage();
+    }
+
+    /**
+     * Apply current language to all elements
+     */
+    function applyLanguage() {
+        const lang = I18n.getLang();
+
+        // Update language toggle button
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            const flag = langToggle.querySelector('.lang-flag');
+            const code = langToggle.querySelector('.lang-code');
+            if (flag) flag.textContent = lang === 'en' ? '🇬🇧' : '🇪🇸';
+            if (code) code.textContent = lang === 'en' ? 'EN' : 'ES';
+        }
+
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            el.textContent = I18n.t(key);
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            el.placeholder = I18n.t(key);
+        });
+
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
     }
 
     /**

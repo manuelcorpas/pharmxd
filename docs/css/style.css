@@ -67,12 +67,54 @@ body {
     text-align: center;
 }
 
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 0.25rem;
+}
+
+.lang-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 0.35rem 0.75rem;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.lang-toggle:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.lang-flag {
+    font-size: 1rem;
+}
+
+.lang-code {
+    letter-spacing: 0.5px;
+}
+
 .logo {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-bottom: 0.25rem;
 }
 
 .logo-icon {

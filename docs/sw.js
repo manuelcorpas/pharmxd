@@ -3,17 +3,20 @@
  * Enables offline functionality and caching
  */
 
-const CACHE_NAME = 'pharmxd-v1';
+const CACHE_NAME = 'pharmxd-v2';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './css/style.css',
     './js/app.js',
+    './js/i18n.js',
     './js/snp-parser.js',
     './js/phenotype.js',
     './js/cpic-lookup.js',
     './manifest.json',
-    './icons/icon.svg'
+    './icons/icon.svg',
+    './icons/icon-192.png',
+    './icons/icon-512.png'
 ];
 
 // Install event - cache assets

@@ -43,12 +43,18 @@
     <div class="app-container">
         <!-- Header -->
         <header class="app-header">
-            <div class="logo">
-                <span class="logo-icon">💊</span>
-                <span class="logo-text">PharmXD</span>
+            <div class="header-top">
+                <div class="logo">
+                    <span class="logo-icon">💊</span>
+                    <span class="logo-text">PharmXD</span>
+                </div>
+                <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Change language">
+                    <span class="lang-flag">🇬🇧</span>
+                    <span class="lang-code">EN</span>
+                </button>
             </div>
-            <p class="tagline">Get personalized medication dosing based on your DNA</p>
-            <p class="tagline-sub">Upload your 23andMe or AncestryDNA file to check if your genes affect how you respond to common medications</p>
+            <p class="tagline" data-i18n="tagline">Get personalized medication dosing based on your DNA</p>
+            <p class="tagline-sub" data-i18n="taglineSub">Upload your 23andMe or AncestryDNA file to check if your genes affect how you respond to common medications</p>
         </header>
 
         <!-- Main Content -->
@@ -57,33 +63,33 @@
             <section id="step-upload" class="step active">
                 <div class="step-header">
                     <span class="step-number">1</span>
-                    <h2>Upload Your Genetic Data</h2>
+                    <h2 data-i18n="step1Title">Upload Your Genetic Data</h2>
                 </div>
                 <div class="step-content">
                     <p class="step-description">
-                        Upload your raw genetic data file from 23andMe, AncestryDNA, or similar services.
-                        <strong>Your data stays on your device</strong> - nothing is uploaded to any server.
+                        <span data-i18n="step1Desc">Upload your raw genetic data file from 23andMe, AncestryDNA, or similar services.</span>
+                        <strong data-i18n="dataPrivacy">Your data stays on your device</strong><span data-i18n="dataPrivacyFull"> - nothing is uploaded to any server.</span>
                     </p>
 
                     <div class="upload-zone" id="upload-zone">
                         <input type="file" id="file-input" accept=".txt,.csv,.zip" style="display:none;">
                         <div class="upload-icon">📁</div>
-                        <p class="upload-text">Drag & drop your file here</p>
-                        <p class="upload-or">or</p>
-                        <button type="button" class="upload-button" id="upload-btn">Choose File</button>
-                        <p class="upload-hint">Accepts .txt or .csv files from 23andMe, AncestryDNA</p>
+                        <p class="upload-text" data-i18n="dragDrop">Drag & drop your file here</p>
+                        <p class="upload-or" data-i18n="or">or</p>
+                        <button type="button" class="upload-button" id="upload-btn" data-i18n="chooseFile">Choose File</button>
+                        <p class="upload-hint" data-i18n="fileHint">Accepts .txt or .csv files from 23andMe, AncestryDNA</p>
                     </div>
 
                     <div class="demo-section">
-                        <p>No genetic data? Try a demo:</p>
+                        <p data-i18n="noData">No genetic data? Try a demo:</p>
                         <div class="demo-buttons">
                             <button class="demo-btn" data-demo="sarah">
-                                <span class="demo-name">Sarah</span>
-                                <span class="demo-desc">CYP2C19 Intermediate</span>
+                                <span class="demo-name" data-i18n="demoSarah">Sarah</span>
+                                <span class="demo-desc" data-i18n="demoSarahDesc">CYP2C19 Intermediate</span>
                             </button>
                             <button class="demo-btn" data-demo="john">
-                                <span class="demo-name">John</span>
-                                <span class="demo-desc">CYP2D6 Poor Metabolizer</span>
+                                <span class="demo-name" data-i18n="demoJohn">John</span>
+                                <span class="demo-desc" data-i18n="demoJohnDesc">CYP2D6 Poor Metabolizer</span>
                             </button>
                         </div>
                     </div>
@@ -94,18 +100,18 @@
             <section id="step-profile" class="step">
                 <div class="step-header">
                     <span class="step-number">2</span>
-                    <h2>Your Pharmacogenetic Profile</h2>
+                    <h2 data-i18n="step2Title">Your Pharmacogenetic Profile</h2>
                 </div>
                 <div class="step-content">
                     <div id="profile-loading" class="loading hidden">
                         <div class="spinner"></div>
-                        <p>Analyzing genetic variants...</p>
+                        <p data-i18n="analyzing">Analyzing genetic variants...</p>
                     </div>
 
                     <div id="profile-results" class="hidden">
                         <div class="profile-summary">
-                            <p><strong id="snp-count">0</strong> pharmacogenomic variants analyzed</p>
-                            <button type="button" class="back-btn" id="upload-new-btn">📁 Upload New Genetic File</button>
+                            <p><strong id="snp-count">0</strong> <span data-i18n="variantsAnalyzed">pharmacogenomic variants analyzed</span></p>
+                            <button type="button" class="back-btn" id="upload-new-btn">📁 <span data-i18n="uploadNew">Upload New Genetic File</span></button>
                         </div>
 
                         <div class="gene-cards" id="gene-cards">
@@ -119,37 +125,37 @@
             <section id="step-summary" class="step">
                 <div class="step-header">
                     <span class="step-number">3</span>
-                    <h2>Your Drug Response Summary</h2>
+                    <h2 data-i18n="step3Title">Your Drug Response Summary</h2>
                 </div>
                 <div class="step-content">
                     <div id="summary-card" class="summary-card hidden">
-                        <p class="summary-intro">Based on your genetic profile, here's how you may respond to <strong id="total-drugs-count">0</strong> medications in our database:</p>
+                        <p class="summary-intro"><span data-i18n="summaryIntro">Based on your genetic profile, here's how you may respond to</span> <strong id="total-drugs-count">0</strong> <span data-i18n="medicationsInDb">medications in our database:</span></p>
 
                         <div class="summary-stats">
                             <div class="summary-stat standard">
                                 <span class="stat-icon">✓</span>
                                 <span class="stat-number" id="stat-standard">0</span>
-                                <span class="stat-label">Standard dosing</span>
+                                <span class="stat-label" data-i18n="standardDosing">Standard dosing</span>
                             </div>
                             <div class="summary-stat caution">
                                 <span class="stat-icon">⚠</span>
                                 <span class="stat-number" id="stat-caution">0</span>
-                                <span class="stat-label">Use with caution</span>
+                                <span class="stat-label" data-i18n="useWithCaution">Use with caution</span>
                             </div>
                             <div class="summary-stat avoid">
                                 <span class="stat-icon">✗</span>
                                 <span class="stat-number" id="stat-avoid">0</span>
-                                <span class="stat-label">Avoid or use alternative</span>
+                                <span class="stat-label" data-i18n="avoidOrAlt">Avoid or use alternative</span>
                             </div>
                         </div>
 
                         <div id="alert-drugs" class="alert-drugs hidden">
-                            <h4>Medications requiring attention:</h4>
+                            <h4 data-i18n="medsAttention">Medications requiring attention:</h4>
                             <ul id="alert-drugs-list"></ul>
                         </div>
 
                         <button type="button" class="wallet-card-btn" id="wallet-card-btn">
-                            💳 Get Your Wallet Card
+                            💳 <span data-i18n="getWalletCard">Get Your Wallet Card</span>
                         </button>
                     </div>
                 </div>
@@ -163,27 +169,27 @@
                         <div class="wallet-card" id="wallet-card">
                             <div class="wallet-card-header">
                                 <div class="wallet-logo">💊 PharmXD</div>
-                                <div class="wallet-title">Pharmacogenetic Alert Card</div>
+                                <div class="wallet-title" data-i18n="walletTitle">Pharmacogenetic Alert Card</div>
                             </div>
                             <div class="wallet-card-body">
                                 <div class="wallet-section">
-                                    <div class="wallet-label">My Genetic Profile</div>
+                                    <div class="wallet-label" data-i18n="walletProfile">My Genetic Profile</div>
                                     <div class="wallet-genes" id="wallet-genes"></div>
                                 </div>
                                 <div class="wallet-section wallet-avoid-section">
-                                    <div class="wallet-label">⚠️ Medications Requiring Attention</div>
+                                    <div class="wallet-label">⚠️ <span data-i18n="walletMedsAttention">Medications Requiring Attention</span></div>
                                     <div class="wallet-avoid-list" id="wallet-avoid-list"></div>
                                 </div>
                             </div>
                             <div class="wallet-card-footer">
-                                <div class="wallet-disclaimer">Show this card to your doctor or pharmacist</div>
+                                <div class="wallet-disclaimer" data-i18n="walletDisclaimer">Show this card to your doctor or pharmacist</div>
                                 <div class="wallet-url">pharmxd.com</div>
                             </div>
                         </div>
                     </div>
                     <div class="wallet-actions">
-                        <button type="button" class="wallet-action-btn" id="wallet-print-btn">🖨️ Print Card</button>
-                        <button type="button" class="wallet-action-btn" id="wallet-screenshot-btn">📱 Save as Image</button>
+                        <button type="button" class="wallet-action-btn" id="wallet-print-btn">🖨️ <span data-i18n="printCard">Print Card</span></button>
+                        <button type="button" class="wallet-action-btn" id="wallet-screenshot-btn">📱 <span data-i18n="saveImage">Save as Image</span></button>
                     </div>
                 </div>
             </div>
@@ -192,19 +198,20 @@
             <section id="step-drugs" class="step">
                 <div class="step-header">
                     <span class="step-number">4</span>
-                    <h2>Check Your Medications</h2>
+                    <h2 data-i18n="step4Title">Check Your Medications</h2>
                 </div>
                 <div class="step-content">
                     <div class="drug-search">
                         <input type="text"
                                id="drug-search-input"
+                               data-i18n-placeholder="searchPlaceholder"
                                placeholder="Search for a medication..."
                                autocomplete="off">
                         <div id="drug-suggestions" class="suggestions hidden"></div>
                     </div>
 
                     <div class="common-drugs">
-                        <p>Common medications:</p>
+                        <p data-i18n="commonMeds">Common medications:</p>
                         <div class="drug-chips" id="drug-chips">
                             <button class="drug-chip" data-drug="clopidogrel">Clopidogrel</button>
                             <button class="drug-chip" data-drug="codeine">Codeine</button>
@@ -227,15 +234,13 @@
         <!-- Footer -->
         <footer class="app-footer">
             <div class="disclaimer">
-                <strong>Disclaimer:</strong> PharmXD is for educational purposes only.
-                It is not a substitute for professional medical advice.
-                Always consult your physician or pharmacist before making medication decisions.
+                <strong data-i18n="disclaimer">Disclaimer:</strong> <span data-i18n="disclaimerText">PharmXD is for educational purposes only. It is not a substitute for professional medical advice. Always consult your physician or pharmacist before making medication decisions.</span>
             </div>
             <div class="footer-info">
-                <p>Data sources: <a href="https://cpicpgx.org/" target="_blank">CPIC</a> |
+                <p><span data-i18n="dataSources">Data sources:</span> <a href="https://cpicpgx.org/" target="_blank">CPIC</a> |
                    <a href="https://www.pharmgkb.org/" target="_blank">PharmGKB</a> |
                    <a href="https://www.fda.gov/" target="_blank">FDA</a></p>
-                <p class="privacy">🔒 Your genetic data never leaves your device</p>
+                <p class="privacy">🔒 <span data-i18n="privacyNote">Your genetic data never leaves your device</span></p>
             </div>
         </footer>
     </div>
@@ -252,6 +257,7 @@
 
     <!-- Scripts -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/snp-parser.js"></script>
     <script src="js/phenotype.js"></script>
     <script src="js/cpic-lookup.js"></script>
